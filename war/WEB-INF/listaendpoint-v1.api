@@ -1,0 +1,237 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://myapp.appspot.com/_ah/api",
+  "name" : "listaendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://myapp.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "myshoppinglist.com",
+  "ownerName" : "myshoppinglist.com",
+  "methods" : {
+    "listaendpoint.updateLista" : {
+      "path" : "lista",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.updateLista",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "listaendpoint.listLista" : {
+      "path" : "lista",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.listLista",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "listaendpoint.removeLista" : {
+      "path" : "lista/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.removeLista",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "listaendpoint.insertLista" : {
+      "path" : "lista",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.insertLista",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "listaendpoint.getLista" : {
+      "path" : "lista/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.getLista",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Lista" : {
+        "id" : "Lista",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string"
+          },
+          "user" : {
+            "type" : "string"
+          },
+          "isArchived" : {
+            "type" : "boolean"
+          },
+          "products" : {
+            "$ref" : "JsonMap"
+          },
+          "version" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "namespace" : {
+            "type" : "string"
+          }
+        }
+      },
+      "JsonMap" : {
+        "id" : "JsonMap",
+        "type" : "object"
+      },
+      "CollectionResponse_Lista" : {
+        "id" : "CollectionResponse_Lista",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Lista"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.myshoppinglist.ListaEndpoint.updateLista" : {
+        "request" : {
+          "$ref" : "Lista"
+        },
+        "response" : {
+          "$ref" : "Lista"
+        }
+      },
+      "com.myshoppinglist.ListaEndpoint.listLista" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Lista"
+        }
+      },
+      "com.myshoppinglist.ListaEndpoint.removeLista" : {
+      },
+      "com.myshoppinglist.ListaEndpoint.insertLista" : {
+        "request" : {
+          "$ref" : "Lista"
+        },
+        "response" : {
+          "$ref" : "Lista"
+        }
+      },
+      "com.myshoppinglist.ListaEndpoint.getLista" : {
+        "response" : {
+          "$ref" : "Lista"
+        }
+      }
+    }
+  }
+}

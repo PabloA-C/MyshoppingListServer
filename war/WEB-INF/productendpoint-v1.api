@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://myapp.appspot.com/_ah/api",
+  "root" : "https://MyShoppingList.appspot.com/_ah/api",
   "name" : "productendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://myapp.appspot.com/_ah/spi",
+    "bns" : "https://MyShoppingList.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -67,22 +67,6 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "productendpoint.updateProduct" : {
-      "path" : "product",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.myshoppinglist.ProductEndpoint.updateProduct",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "productendpoint.removeProduct" : {
       "path" : "product/{id}",
       "httpMethod" : "DELETE",
@@ -102,6 +86,22 @@
       },
       "response" : {
         "body" : "empty"
+      }
+    },
+    "productendpoint.updateProduct" : {
+      "path" : "product",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ProductEndpoint.updateProduct",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
       }
     },
     "productendpoint.getProduct" : {
@@ -207,6 +207,8 @@
           "$ref" : "Product"
         }
       },
+      "com.myshoppinglist.ProductEndpoint.removeProduct" : {
+      },
       "com.myshoppinglist.ProductEndpoint.updateProduct" : {
         "request" : {
           "$ref" : "Product"
@@ -214,8 +216,6 @@
         "response" : {
           "$ref" : "Product"
         }
-      },
-      "com.myshoppinglist.ProductEndpoint.removeProduct" : {
       },
       "com.myshoppinglist.ProductEndpoint.getProduct" : {
         "response" : {

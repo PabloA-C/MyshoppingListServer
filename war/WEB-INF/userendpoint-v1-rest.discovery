@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/ZcFpfMoTNzCct8sGx7oSUlgGLVc\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/WOeM60I95EpZ_aRYKKe7b1Olesg\"",
  "discoveryVersion": "v1",
  "id": "userendpoint:v1",
  "name": "userendpoint",
@@ -13,9 +13,9 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myapp.appspot.com/_ah/api/userendpoint/v1/",
+ "baseUrl": "https://MyShoppingList.appspot.com/_ah/api/userendpoint/v1/",
  "basePath": "/_ah/api/userendpoint/v1/",
- "rootUrl": "https://myapp.appspot.com/_ah/api/",
+ "rootUrl": "https://MyShoppingList.appspot.com/_ah/api/",
  "servicePath": "userendpoint/v1/",
  "batchPath": "batch",
  "parameters": {

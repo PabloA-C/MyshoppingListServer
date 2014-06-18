@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/ZcFpfMoTNzCct8sGx7oSUlgGLVc\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/WOeM60I95EpZ_aRYKKe7b1Olesg\"",
  "discoveryVersion": "v1",
  "id": "userendpoint:v1",
  "name": "userendpoint",
@@ -13,8 +13,8 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rpc",
- "rootUrl": "https://myapp.appspot.com/_ah/api/",
- "rpcUrl": "https://myapp.appspot.com/_ah/api/rpc",
+ "rootUrl": "https://MyShoppingList.appspot.com/_ah/api/",
+ "rpcUrl": "https://MyShoppingList.appspot.com/_ah/api/rpc",
  "rpcPath": "/_ah/api/rpc",
  "parameters": {
   "alt": {

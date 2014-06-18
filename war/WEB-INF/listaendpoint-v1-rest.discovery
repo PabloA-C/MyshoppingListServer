@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/EfmRombk6kn0YKA_aco37SHX3Ps\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/VkTm5_GO6hK4IfwUWcKEdCe5Yn8\"",
  "discoveryVersion": "v1",
  "id": "listaendpoint:v1",
  "name": "listaendpoint",
@@ -13,9 +13,9 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myapp.appspot.com/_ah/api/listaendpoint/v1/",
+ "baseUrl": "https://MyShoppingList.appspot.com/_ah/api/listaendpoint/v1/",
  "basePath": "/_ah/api/listaendpoint/v1/",
- "rootUrl": "https://myapp.appspot.com/_ah/api/",
+ "rootUrl": "https://MyShoppingList.appspot.com/_ah/api/",
  "servicePath": "listaendpoint/v1/",
  "batchPath": "batch",
  "parameters": {

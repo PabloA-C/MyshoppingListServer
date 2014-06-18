@@ -99,9 +99,6 @@ public class DeviceInfoEndpoint {
 	public DeviceInfo insertDeviceInfo(DeviceInfo deviceinfo) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (containsDeviceInfo(deviceinfo)) {
-				throw new EntityExistsException("Object already exists");
-			}
 			mgr.persist(deviceinfo);
 		} finally {
 			mgr.close();

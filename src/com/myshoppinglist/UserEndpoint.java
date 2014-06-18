@@ -116,9 +116,6 @@ public class UserEndpoint {
 	public User updateUser(User user) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (!containsUser(user)) {
-				throw new EntityNotFoundException("Object does not exist");
-			}
 			mgr.persist(user);
 		} finally {
 			mgr.close();

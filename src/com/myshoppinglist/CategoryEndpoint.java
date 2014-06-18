@@ -97,9 +97,6 @@ public class CategoryEndpoint {
 	public Category insertCategory(Category category) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (containsCategory(category)) {
-				throw new EntityExistsException("Object already exists");
-			}
 			mgr.persist(category);
 		} finally {
 			mgr.close();

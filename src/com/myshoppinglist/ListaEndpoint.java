@@ -117,9 +117,6 @@ public class ListaEndpoint {
 	public Lista updateLista(Lista lista) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (!containsLista(lista)) {
-				throw new EntityNotFoundException("Object does not exist");
-			}
 			mgr.persist(lista);
 		} finally {
 			mgr.close();

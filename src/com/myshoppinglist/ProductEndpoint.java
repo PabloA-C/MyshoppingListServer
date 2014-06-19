@@ -97,9 +97,6 @@ public class ProductEndpoint {
 	public Product insertProduct(Product product) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (containsProduct(product)) {
-				throw new EntityExistsException("Object already exists");
-			}
 			mgr.persist(product);
 		} finally {
 			mgr.close();

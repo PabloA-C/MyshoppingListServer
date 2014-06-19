@@ -2,7 +2,7 @@
   "extends" : "thirdParty.api",
   "abstract" : false,
   "root" : "https://MyShoppingList.appspot.com/_ah/api",
-  "name" : "listaendpoint",
+  "name" : "listitemendpoint",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
@@ -26,14 +26,35 @@
   "ownerDomain" : "myshoppinglist.com",
   "ownerName" : "myshoppinglist.com",
   "methods" : {
-    "listaendpoint.updateLista" : {
-      "path" : "lista",
-      "httpMethod" : "PUT",
+    "listitemendpoint.removeListItem" : {
+      "path" : "listitem/{id}",
+      "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.updateLista",
+      "rosyMethod" : "com.myshoppinglist.ListItemEndpoint.removeListItem",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "listitemendpoint.insertListItem" : {
+      "path" : "listitem",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListItemEndpoint.insertListItem",
       "request" : {
         "body" : "autoTemplate(backendRequest)",
         "bodyName" : "resource"
@@ -42,14 +63,51 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "listaendpoint.listLista" : {
-      "path" : "lista",
+    "listitemendpoint.updateListItem" : {
+      "path" : "listitem",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListItemEndpoint.updateListItem",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "listitemendpoint.getListItem" : {
+      "path" : "listitem/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.listLista",
+      "rosyMethod" : "com.myshoppinglist.ListItemEndpoint.getListItem",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "listitemendpoint.listListItem" : {
+      "path" : "listitem",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListItemEndpoint.listListItem",
       "request" : {
         "parameters" : {
           "cursor" : {
@@ -66,88 +124,30 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
-    },
-    "listaendpoint.removeLista" : {
-      "path" : "lista/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.removeLista",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "listaendpoint.insertLista" : {
-      "path" : "lista",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.insertLista",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "listaendpoint.getLista" : {
-      "path" : "lista/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.myshoppinglist.ListaEndpoint.getLista",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "Lista" : {
-        "id" : "Lista",
+      "ListItem" : {
+        "id" : "ListItem",
         "type" : "object",
         "properties" : {
           "key" : {
             "$ref" : "Key"
           },
-          "name" : {
+          "listName" : {
             "type" : "string"
           },
-          "date" : {
+          "productName" : {
             "type" : "string"
           },
-          "user" : {
-            "type" : "string"
-          },
-          "isArchived" : {
+          "isChecked" : {
             "type" : "boolean"
           },
           "version" : {
+            "type" : "integer"
+          },
+          "quantity" : {
             "type" : "integer"
           }
         }
@@ -180,14 +180,14 @@
           }
         }
       },
-      "CollectionResponse_Lista" : {
-        "id" : "CollectionResponse_Lista",
+      "CollectionResponse_ListItem" : {
+        "id" : "CollectionResponse_ListItem",
         "type" : "object",
         "properties" : {
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "Lista"
+              "$ref" : "ListItem"
             }
           },
           "nextPageToken" : {
@@ -197,32 +197,32 @@
       }
     },
     "methods" : {
-      "com.myshoppinglist.ListaEndpoint.updateLista" : {
+      "com.myshoppinglist.ListItemEndpoint.removeListItem" : {
+      },
+      "com.myshoppinglist.ListItemEndpoint.insertListItem" : {
         "request" : {
-          "$ref" : "Lista"
+          "$ref" : "ListItem"
         },
         "response" : {
-          "$ref" : "Lista"
+          "$ref" : "ListItem"
         }
       },
-      "com.myshoppinglist.ListaEndpoint.listLista" : {
-        "response" : {
-          "$ref" : "CollectionResponse_Lista"
-        }
-      },
-      "com.myshoppinglist.ListaEndpoint.removeLista" : {
-      },
-      "com.myshoppinglist.ListaEndpoint.insertLista" : {
+      "com.myshoppinglist.ListItemEndpoint.updateListItem" : {
         "request" : {
-          "$ref" : "Lista"
+          "$ref" : "ListItem"
         },
         "response" : {
-          "$ref" : "Lista"
+          "$ref" : "ListItem"
         }
       },
-      "com.myshoppinglist.ListaEndpoint.getLista" : {
+      "com.myshoppinglist.ListItemEndpoint.getListItem" : {
         "response" : {
-          "$ref" : "Lista"
+          "$ref" : "ListItem"
+        }
+      },
+      "com.myshoppinglist.ListItemEndpoint.listListItem" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ListItem"
         }
       }
     }

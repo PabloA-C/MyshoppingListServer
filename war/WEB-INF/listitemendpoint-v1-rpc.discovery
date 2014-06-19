@@ -1,9 +1,9 @@
 {
- "kind": "discovery#restDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/u8TnnTwEo4qJkp2qbcBV6Js4LbE\"",
+ "kind": "discovery#rpcDescription",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/VV1lRNdVtPY4WNbZhKvi4AxFYrw\"",
  "discoveryVersion": "v1",
- "id": "listaendpoint:v1",
- "name": "listaendpoint",
+ "id": "listitemendpoint:v1",
+ "name": "listitemendpoint",
  "version": "v1",
  "description": "This is an API",
  "ownerDomain": "myshoppinglist.com",
@@ -12,12 +12,10 @@
   "x16": "http://www.google.com/images/icons/product/search-16.gif",
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
- "protocol": "rest",
- "baseUrl": "https://MyShoppingList.appspot.com/_ah/api/listaendpoint/v1/",
- "basePath": "/_ah/api/listaendpoint/v1/",
+ "protocol": "rpc",
  "rootUrl": "https://MyShoppingList.appspot.com/_ah/api/",
- "servicePath": "listaendpoint/v1/",
- "batchPath": "batch",
+ "rpcUrl": "https://MyShoppingList.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
  "parameters": {
   "alt": {
    "type": "string",
@@ -73,14 +71,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_Lista": {
-   "id": "CollectionResponse_Lista",
+  "CollectionResponse_ListItem": {
+   "id": "CollectionResponse_ListItem",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "Lista"
+      "$ref": "ListItem"
      }
     },
     "nextPageToken": {
@@ -116,24 +114,25 @@
     }
    }
   },
-  "Lista": {
-   "id": "Lista",
+  "ListItem": {
+   "id": "ListItem",
    "type": "object",
    "properties": {
-    "date": {
-     "type": "string"
-    },
-    "isArchived": {
+    "isChecked": {
      "type": "boolean"
     },
     "key": {
      "$ref": "Key"
     },
-    "name": {
+    "listName": {
      "type": "string"
     },
-    "user": {
+    "productName": {
      "type": "string"
+    },
+    "quantity": {
+     "type": "integer",
+     "format": "int32"
     },
     "version": {
      "type": "integer",
@@ -143,75 +142,69 @@
   }
  },
  "methods": {
-  "getLista": {
-   "id": "listaendpoint.getLista",
-   "path": "lista/{id}",
-   "httpMethod": "GET",
+  "listitemendpoint.getListItem": {
+   "id": "listitemendpoint.getListItem",
+   "allowGet": true,
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64",
-     "location": "path"
+     "format": "int64"
     }
    },
    "parameterOrder": [
     "id"
    ],
-   "response": {
-    "$ref": "Lista"
+   "returns": {
+    "$ref": "ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "insertLista": {
-   "id": "listaendpoint.insertLista",
-   "path": "lista",
-   "httpMethod": "POST",
-   "request": {
-    "$ref": "Lista",
-    "parameterName": "resource"
+  "listitemendpoint.insertListItem": {
+   "id": "listitemendpoint.insertListItem",
+   "parameters": {
+    "resource": {
+     "$ref": "ListItem"
+    }
    },
-   "response": {
-    "$ref": "Lista"
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "listLista": {
-   "id": "listaendpoint.listLista",
-   "path": "lista",
-   "httpMethod": "GET",
+  "listitemendpoint.listListItem": {
+   "id": "listitemendpoint.listListItem",
+   "allowGet": true,
    "parameters": {
     "cursor": {
-     "type": "string",
-     "location": "query"
+     "type": "string"
     },
     "limit": {
      "type": "integer",
-     "format": "int32",
-     "location": "query"
+     "format": "int32"
     }
    },
-   "response": {
-    "$ref": "CollectionResponse_Lista"
+   "returns": {
+    "$ref": "CollectionResponse_ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "removeLista": {
-   "id": "listaendpoint.removeLista",
-   "path": "lista/{id}",
-   "httpMethod": "DELETE",
+  "listitemendpoint.removeListItem": {
+   "id": "listitemendpoint.removeListItem",
    "parameters": {
     "id": {
      "type": "string",
      "required": true,
-     "format": "int64",
-     "location": "path"
+     "format": "int64"
     }
    },
    "parameterOrder": [
@@ -221,16 +214,18 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "updateLista": {
-   "id": "listaendpoint.updateLista",
-   "path": "lista",
-   "httpMethod": "PUT",
-   "request": {
-    "$ref": "Lista",
-    "parameterName": "resource"
+  "listitemendpoint.updateListItem": {
+   "id": "listitemendpoint.updateListItem",
+   "parameters": {
+    "resource": {
+     "$ref": "ListItem"
+    }
    },
-   "response": {
-    "$ref": "Lista"
+   "parameterOrder": [
+    "resource"
+   ],
+   "returns": {
+    "$ref": "ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

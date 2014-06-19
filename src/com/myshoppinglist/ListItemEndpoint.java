@@ -18,8 +18,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-@Api(name = "listaendpoint", namespace = @ApiNamespace(ownerDomain = "myshoppinglist.com", ownerName = "myshoppinglist.com", packagePath = ""))
-public class ListaEndpoint {
+@Api(name = "listitemendpoint", namespace = @ApiNamespace(ownerDomain = "myshoppinglist.com", ownerName = "myshoppinglist.com", packagePath = ""))
+public class ListItemEndpoint {
 
 	/**
 	 * This method lists all the entities inserted in datastore.
@@ -29,18 +29,18 @@ public class ListaEndpoint {
 	 * persisted and a cursor to the next page.
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
-	@ApiMethod(name = "listLista")
-	public CollectionResponse<Lista> listLista(
+	@ApiMethod(name = "listListItem")
+	public CollectionResponse<ListItem> listListItem(
 			@Nullable @Named("cursor") String cursorString,
 			@Nullable @Named("limit") Integer limit) {
 
 		EntityManager mgr = null;
 		Cursor cursor = null;
-		List<Lista> execute = null;
+		List<ListItem> execute = null;
 
 		try {
 			mgr = getEntityManager();
-			Query query = mgr.createQuery("select from Lista as Lista");
+			Query query = mgr.createQuery("select from ListItem as ListItem");
 			if (cursorString != null && cursorString != "") {
 				cursor = Cursor.fromWebSafeString(cursorString);
 				query.setHint(JPACursorHelper.CURSOR_HINT, cursor);
@@ -51,20 +51,20 @@ public class ListaEndpoint {
 				query.setMaxResults(limit);
 			}
 
-			execute = (List<Lista>) query.getResultList();
+			execute = (List<ListItem>) query.getResultList();
 			cursor = JPACursorHelper.getCursor(execute);
 			if (cursor != null)
 				cursorString = cursor.toWebSafeString();
 
 			// Tight loop for fetching all entities from datastore and accomodate
 			// for lazy fetch.
-			for (Lista obj : execute)
+			for (ListItem obj : execute)
 				;
 		} finally {
 			mgr.close();
 		}
 
-		return CollectionResponse.<Lista> builder().setItems(execute)
+		return CollectionResponse.<ListItem> builder().setItems(execute)
 				.setNextPageToken(cursorString).build();
 	}
 
@@ -74,16 +74,16 @@ public class ListaEndpoint {
 	 * @param id the primary key of the java bean.
 	 * @return The entity with primary key id.
 	 */
-	@ApiMethod(name = "getLista")
-	public Lista getLista(@Named("id") Long id) {
+	@ApiMethod(name = "getListItem")
+	public ListItem getListItem(@Named("id") Long id) {
 		EntityManager mgr = getEntityManager();
-		Lista lista = null;
+		ListItem listitem = null;
 		try {
-			lista = mgr.find(Lista.class, id);
+			listitem = mgr.find(ListItem.class, id);
 		} finally {
 			mgr.close();
 		}
-		return lista;
+		return listitem;
 	}
 
 	/**
@@ -91,21 +91,18 @@ public class ListaEndpoint {
 	 * exists in the datastore, an exception is thrown.
 	 * It uses HTTP POST method.
 	 *
-	 * @param lista the entity to be inserted.
+	 * @param listitem the entity to be inserted.
 	 * @return The inserted entity.
 	 */
-	@ApiMethod(name = "insertLista")
-	public Lista insertLista(Lista lista) {
+	@ApiMethod(name = "insertListItem")
+	public ListItem insertListItem(ListItem listitem) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (containsLista(lista)) {
-				throw new EntityExistsException("Object already exists");
-			}
-			mgr.persist(lista);
+			mgr.persist(listitem);
 		} finally {
 			mgr.close();
 		}
-		return lista;
+		return listitem;
 	}
 
 	/**
@@ -113,18 +110,18 @@ public class ListaEndpoint {
 	 * exist in the datastore, an exception is thrown.
 	 * It uses HTTP PUT method.
 	 *
-	 * @param lista the entity to be updated.
+	 * @param listitem the entity to be updated.
 	 * @return The updated entity.
 	 */
-	@ApiMethod(name = "updateLista")
-	public Lista updateLista(Lista lista) {
+	@ApiMethod(name = "updateListItem")
+	public ListItem updateListItem(ListItem listitem) {
 		EntityManager mgr = getEntityManager();
 		try {
-			mgr.persist(lista);
+			mgr.persist(listitem);
 		} finally {
 			mgr.close();
 		}
-		return lista;
+		return listitem;
 	}
 
 	/**
@@ -133,22 +130,22 @@ public class ListaEndpoint {
 	 *
 	 * @param id the primary key of the entity to be deleted.
 	 */
-	@ApiMethod(name = "removeLista")
-	public void removeLista(@Named("id") Long id) {
+	@ApiMethod(name = "removeListItem")
+	public void removeListItem(@Named("id") Long id) {
 		EntityManager mgr = getEntityManager();
 		try {
-			Lista lista = mgr.find(Lista.class, id);
-			mgr.remove(lista);
+			ListItem listitem = mgr.find(ListItem.class, id);
+			mgr.remove(listitem);
 		} finally {
 			mgr.close();
 		}
 	}
 
-	private boolean containsLista(Lista lista) {
+	private boolean containsListItem(ListItem listitem) {
 		EntityManager mgr = getEntityManager();
 		boolean contains = true;
 		try {
-			Lista item = mgr.find(Lista.class, lista.getKey());
+			ListItem item = mgr.find(ListItem.class, listitem.getKey());
 			if (item == null) {
 				contains = false;
 			}

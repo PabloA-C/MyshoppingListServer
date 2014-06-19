@@ -14,7 +14,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key key;
 	private String name,description;
-	private Integer code;
+	private String code;
 	private String categoryName;
 	
 	
@@ -49,11 +49,11 @@ public class Product {
 	}
 	
 	
-	public Integer getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code ) {
+	public void setCode(String code ) {
 		this.code = code;
 	}
 	

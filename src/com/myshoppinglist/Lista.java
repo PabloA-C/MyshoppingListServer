@@ -16,7 +16,6 @@ public class Lista {
 	private Key key;
 	private String name, date, user;
 	private boolean isArchived;
-	private Map<Product, Integer> products;
 	private Integer version;
 
 	public Key getKey() {
@@ -55,13 +54,6 @@ public class Lista {
 		this.isArchived = isArchived;
 	}
 	
-	public Map<Product,Integer> getProducts(){
-		return products;
-	}
-	
-	public void setProducts(Map<Product,Integer> products){
-		this.products = products;
-	}
 	
 	public Integer getVersion() {
 		return version;

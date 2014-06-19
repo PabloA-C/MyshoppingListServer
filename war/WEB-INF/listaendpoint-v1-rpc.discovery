@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/VkTm5_GO6hK4IfwUWcKEdCe5Yn8\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/u8TnnTwEo4qJkp2qbcBV6Js4LbE\"",
  "discoveryVersion": "v1",
  "id": "listaendpoint:v1",
  "name": "listaendpoint",
@@ -86,10 +86,6 @@
     }
    }
   },
-  "JsonMap": {
-   "id": "JsonMap",
-   "type": "object"
-  },
   "Key": {
    "id": "Key",
    "type": "object",
@@ -133,9 +129,6 @@
     },
     "name": {
      "type": "string"
-    },
-    "products": {
-     "$ref": "JsonMap"
     },
     "user": {
      "type": "string"

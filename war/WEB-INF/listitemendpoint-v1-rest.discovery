@@ -1,9 +1,9 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/u8TnnTwEo4qJkp2qbcBV6Js4LbE\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/VV1lRNdVtPY4WNbZhKvi4AxFYrw\"",
  "discoveryVersion": "v1",
- "id": "listaendpoint:v1",
- "name": "listaendpoint",
+ "id": "listitemendpoint:v1",
+ "name": "listitemendpoint",
  "version": "v1",
  "description": "This is an API",
  "ownerDomain": "myshoppinglist.com",
@@ -13,10 +13,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://MyShoppingList.appspot.com/_ah/api/listaendpoint/v1/",
- "basePath": "/_ah/api/listaendpoint/v1/",
+ "baseUrl": "https://MyShoppingList.appspot.com/_ah/api/listitemendpoint/v1/",
+ "basePath": "/_ah/api/listitemendpoint/v1/",
  "rootUrl": "https://MyShoppingList.appspot.com/_ah/api/",
- "servicePath": "listaendpoint/v1/",
+ "servicePath": "listitemendpoint/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -73,14 +73,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_Lista": {
-   "id": "CollectionResponse_Lista",
+  "CollectionResponse_ListItem": {
+   "id": "CollectionResponse_ListItem",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "Lista"
+      "$ref": "ListItem"
      }
     },
     "nextPageToken": {
@@ -116,24 +116,25 @@
     }
    }
   },
-  "Lista": {
-   "id": "Lista",
+  "ListItem": {
+   "id": "ListItem",
    "type": "object",
    "properties": {
-    "date": {
-     "type": "string"
-    },
-    "isArchived": {
+    "isChecked": {
      "type": "boolean"
     },
     "key": {
      "$ref": "Key"
     },
-    "name": {
+    "listName": {
      "type": "string"
     },
-    "user": {
+    "productName": {
      "type": "string"
+    },
+    "quantity": {
+     "type": "integer",
+     "format": "int32"
     },
     "version": {
      "type": "integer",
@@ -143,9 +144,9 @@
   }
  },
  "methods": {
-  "getLista": {
-   "id": "listaendpoint.getLista",
-   "path": "lista/{id}",
+  "getListItem": {
+   "id": "listitemendpoint.getListItem",
+   "path": "listitem/{id}",
    "httpMethod": "GET",
    "parameters": {
     "id": {
@@ -159,30 +160,30 @@
     "id"
    ],
    "response": {
-    "$ref": "Lista"
+    "$ref": "ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "insertLista": {
-   "id": "listaendpoint.insertLista",
-   "path": "lista",
+  "insertListItem": {
+   "id": "listitemendpoint.insertListItem",
+   "path": "listitem",
    "httpMethod": "POST",
    "request": {
-    "$ref": "Lista",
+    "$ref": "ListItem",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "Lista"
+    "$ref": "ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "listLista": {
-   "id": "listaendpoint.listLista",
-   "path": "lista",
+  "listListItem": {
+   "id": "listitemendpoint.listListItem",
+   "path": "listitem",
    "httpMethod": "GET",
    "parameters": {
     "cursor": {
@@ -196,15 +197,15 @@
     }
    },
    "response": {
-    "$ref": "CollectionResponse_Lista"
+    "$ref": "CollectionResponse_ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "removeLista": {
-   "id": "listaendpoint.removeLista",
-   "path": "lista/{id}",
+  "removeListItem": {
+   "id": "listitemendpoint.removeListItem",
+   "path": "listitem/{id}",
    "httpMethod": "DELETE",
    "parameters": {
     "id": {
@@ -221,16 +222,16 @@
     "https://www.googleapis.com/auth/userinfo.email"
    ]
   },
-  "updateLista": {
-   "id": "listaendpoint.updateLista",
-   "path": "lista",
+  "updateListItem": {
+   "id": "listitemendpoint.updateListItem",
+   "path": "listitem",
    "httpMethod": "PUT",
    "request": {
-    "$ref": "Lista",
+    "$ref": "ListItem",
     "parameterName": "resource"
    },
    "response": {
-    "$ref": "Lista"
+    "$ref": "ListItem"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

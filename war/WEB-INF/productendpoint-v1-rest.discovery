@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/1iOgUu8TpP3icnXfkLebAsaItuE\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/jI2WElLu294EHqxdeSoIIP5TwH8\"",
  "discoveryVersion": "v1",
  "id": "productendpoint:v1",
  "name": "productendpoint",
@@ -124,8 +124,7 @@
      "type": "string"
     },
     "code": {
-     "type": "integer",
-     "format": "int32"
+     "type": "string"
     },
     "description": {
      "type": "string"

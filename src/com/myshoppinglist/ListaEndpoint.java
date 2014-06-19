@@ -98,9 +98,6 @@ public class ListaEndpoint {
 	public Lista insertLista(Lista lista) {
 		EntityManager mgr = getEntityManager();
 		try {
-			if (containsLista(lista)) {
-				throw new EntityExistsException("Object already exists");
-			}
 			mgr.persist(lista);
 		} finally {
 			mgr.close();

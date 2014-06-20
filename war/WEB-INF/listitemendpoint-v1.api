@@ -79,6 +79,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "listitemendpoint.getListItem" : {
+      "path" : "listitem/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.myshoppinglist.ListItemEndpoint.getListItem",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "listitemendpoint.listListItem" : {
       "path" : "listitem",
       "httpMethod" : "GET",
@@ -96,27 +117,6 @@
           "limit" : {
             "type" : "int32",
             "required" : false
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "listitemendpoint.getListItem" : {
-      "path" : "listitem/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.myshoppinglist.ListItemEndpoint.getListItem",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "int64",
-            "required" : true
           }
         },
         "body" : "empty"
@@ -215,14 +215,14 @@
           "$ref" : "ListItem"
         }
       },
-      "com.myshoppinglist.ListItemEndpoint.listListItem" : {
-        "response" : {
-          "$ref" : "CollectionResponse_ListItem"
-        }
-      },
       "com.myshoppinglist.ListItemEndpoint.getListItem" : {
         "response" : {
           "$ref" : "ListItem"
+        }
+      },
+      "com.myshoppinglist.ListItemEndpoint.listListItem" : {
+        "response" : {
+          "$ref" : "CollectionResponse_ListItem"
         }
       }
     }

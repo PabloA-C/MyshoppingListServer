@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/u8TnnTwEo4qJkp2qbcBV6Js4LbE\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/g2uj2rL_AxmhKx5W9Pm8wmeD-3g\"",
  "discoveryVersion": "v1",
  "id": "listaendpoint:v1",
  "name": "listaendpoint",
@@ -120,9 +120,6 @@
    "properties": {
     "date": {
      "type": "string"
-    },
-    "isArchived": {
-     "type": "boolean"
     },
     "key": {
      "$ref": "Key"

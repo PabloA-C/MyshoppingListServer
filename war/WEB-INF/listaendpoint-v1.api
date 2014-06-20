@@ -144,9 +144,6 @@
           "user" : {
             "type" : "string"
           },
-          "isArchived" : {
-            "type" : "boolean"
-          },
           "version" : {
             "type" : "integer"
           }

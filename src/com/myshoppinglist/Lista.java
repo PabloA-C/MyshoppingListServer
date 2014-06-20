@@ -15,7 +15,6 @@ public class Lista {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key key;
 	private String name, date, user;
-	private boolean isArchived;
 	private Integer version;
 
 	public Key getKey() {
@@ -46,14 +45,6 @@ public class Lista {
 		this.user = user;
 	}
 
-	public boolean getIsArchived() {
-		return isArchived;
-	}
-
-	public void set(boolean isArchived) {
-		this.isArchived = isArchived;
-	}
-	
 	
 	public Integer getVersion() {
 		return version;
